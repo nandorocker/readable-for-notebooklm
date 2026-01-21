@@ -47,14 +47,18 @@
   }
 
   function applyProseClasses() {
-    const docViewers = document.querySelectorAll('.labs-tailwind-doc-viewer');
-    docViewers.forEach(viewer => {
+    // Only target doc viewers that are inside note-editor (not chat)
+    const noteEditors = document.querySelectorAll('note-editor');
+    noteEditors.forEach(editor => {
+      const docViewer = editor.querySelector('.labs-tailwind-doc-viewer');
+      if (!docViewer) return;
+
       if (readabilityEnabled) {
-        viewer.classList.add('prose', 'prose-slate', 'max-w-none');
-        injectTitleIntoContent(viewer);
+        docViewer.classList.add('nb-note-viewer');
+        injectTitleIntoContent(docViewer);
       } else {
-        viewer.classList.remove('prose', 'prose-slate', 'max-w-none');
-        removeInjectedTitle(viewer);
+        docViewer.classList.remove('nb-note-viewer');
+        removeInjectedTitle(docViewer);
       }
     });
   }
