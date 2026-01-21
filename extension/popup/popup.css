@@ -93,7 +93,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(18px); /* Adjusted to keep thumb within bounds */
+  transform: translateX(18px); /* Final fix */
 }
 
 footer {
