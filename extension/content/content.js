@@ -141,13 +141,13 @@
 
     // Create modal overlay
     focusModal = document.createElement('div');
-    focusModal.className = 'nb-focus-modal';
+    focusModal.className = 'nb-focus-modal nb-readability-enabled';
     focusModal.innerHTML = `
       <div class="nb-focus-modal-backdrop"></div>
       <div class="nb-focus-modal-panel">
         <div class="nb-focus-modal-header">
           <button class="nb-focus-close" aria-label="Exit focused reading mode">
-            <span class="material-symbols-outlined">close_fullscreen</span>
+            <span class="material-symbols-outlined google-symbols">close_fullscreen</span>
           </button>
         </div>
         <div class="nb-focus-modal-content"></div>

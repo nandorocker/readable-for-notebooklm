@@ -101,7 +101,7 @@
   background: transparent;
   border-radius: 50%;
   cursor: pointer;
-  color: #1a73e8;
+  color: #000000;
   transition: background-color 0.2s;
   padding: 0;
   margin-right: 4px;
@@ -109,7 +109,7 @@
 }
 
 .nb-focus-button:hover {
-  background-color: rgba(26, 115, 232, 0.04);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .nb-focus-button .material-symbols-outlined {
@@ -188,6 +188,7 @@
 
 .nb-focus-close .material-symbols-outlined {
   font-size: 20px;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
 }
 
 /* Modal content area */
@@ -195,9 +196,75 @@
   flex: 1;
   overflow-y: auto;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Wider content in focus mode */
+/* Ensure viewer fills width properly */
+.nb-focus-modal-content .nb-note-viewer {
+  width: 100%;
+  max-width: 42rem;
+  display: block !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+
+/* Same width as regular mode in focus mode */
 .nb-focus-modal-content .nb-note-viewer > * {
-  max-width: 56rem !important;
+  max-width: 42rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Typography styles for focus modal - mirror the note-editor styles */
+.nb-readability-enabled .nb-focus-modal .nb-note-viewer .nb-injected-title {
+  font-size: 2.75rem !important;
+  line-height: 1.15 !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  margin-bottom: 2.5rem !important;
+  padding-bottom: 1.5rem !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+}
+
+.nb-readability-enabled .nb-focus-modal .nb-note-viewer div.paragraph.heading3 {
+  font-size: 1.5rem !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.nb-readability-enabled .nb-focus-modal .nb-note-viewer div.paragraph.normal {
+  font-size: 1.125rem !important;
+  line-height: 1.75 !important;
+  color: #334155 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.nb-readability-enabled .nb-focus-modal .nb-note-viewer div.paragraph.normal b {
+  font-weight: 600 !important;
+  color: #0f172a !important;
+}
+
+.nb-readability-enabled .nb-focus-modal .nb-note-viewer button.citation-marker {
+  font-size: 0.75rem !important;
+  line-height: 1 !important;
+  font-weight: 600 !important;
+  color: #2563eb !important;
+  background-color: #dbeafe !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 2px 6px !important;
+  margin: 0 2px !important;
+  vertical-align: super !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+.nb-readability-enabled .nb-focus-modal .nb-note-viewer button.citation-marker:hover {
+  background-color: #bfdbfe !important;
+  transform: translateY(-1px) !important;
 }
