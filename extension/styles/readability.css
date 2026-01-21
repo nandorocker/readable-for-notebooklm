@@ -7,14 +7,36 @@
 }
 
 /* Title Styling */
-.nb-readability-enabled .note-header__editable-title {
-  font-size: 1.875rem !important; /* 3xl substitute */
-  line-height: 2.25rem !important;
-  font-weight: 700 !important;
-  color: #0f172a !important; /* slate-900 */
-  margin-bottom: 2rem !important;
+.nb-readability-enabled .note-header__editable-title.nb-hidden-title {
+  display: none !important;
+}
+
+/* Injected Title Styling inside the content */
+.nb-readability-enabled .nb-injected-title {
+  font-size: 2.5rem !important;
+  line-height: 3rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  margin-bottom: 2.5rem !important;
   border-bottom: 1px solid #e2e8f0 !important;
-  padding-bottom: 0.5rem !important;
+  padding-bottom: 1rem !important;
+  display: block !important;
+}
+
+/* Ensure title container doesn't show extra space when hidden */
+.nb-readability-enabled .note-header__title-container:has(.nb-hidden-title),
+.nb-readability-enabled .note-header:has(.nb-hidden-title) {
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide redundant elements */
+.nb-readability-enabled [class*="view-only"],
+.nb-readability-enabled [title*="view only"] {
+  display: none !important;
 }
 
 /* Section Header (Heading 3) */
