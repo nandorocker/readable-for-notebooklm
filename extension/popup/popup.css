@@ -50,6 +50,12 @@ header h1 {
   color: var(--md-sys-color-outline);
 }
 
+.setting-item.disabled .setting-label .title,
+.setting-item.disabled .setting-label .description {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
 /* Material Switch */
 .switch {
   position: relative;
