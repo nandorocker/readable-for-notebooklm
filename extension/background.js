@@ -1,16 +1,16 @@
 // Initialize storage on installation
-browser.runtime.onInstalled.addListener(() => {
-  browser.storage.sync.get('readabilityEnabled').then(result => {
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.sync.get('readabilityEnabled', (result) => {
     const enabled = result.readabilityEnabled || false;
     if (result.readabilityEnabled === undefined) {
-      browser.storage.sync.set({ readabilityEnabled: false });
+      chrome.storage.sync.set({ readabilityEnabled: false });
     }
     updateIcon(enabled);
   });
 });
 
 // Update icon when storage changes
-browser.storage.onChanged.addListener((changes) => {
+chrome.storage.onChanged.addListener((changes) => {
   if (changes.readabilityEnabled) {
     updateIcon(changes.readabilityEnabled.newValue);
   }
@@ -27,5 +27,5 @@ function updateIcon(enabled) {
     "128": "icons/icon-off-128.png"
   };
 
-  browser.action.setIcon({ path });
+  chrome.action.setIcon({ path });
 }

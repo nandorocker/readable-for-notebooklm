@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Readable for NotebookLM",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Readable for NotebookLM improves the readability of Google NotebookLM saved notes with professional typography.",
+  "author": "Nando Rossi",
+  "homepage_url": "https://nan.do",
   "permissions": [
     "storage"
   ],

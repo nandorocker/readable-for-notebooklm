@@ -1,6 +1,6 @@
-# Readable for NotebookLM
+# Readable for NotebookLM by nandorocker
 
-A Firefox extension to improve the readability of Google NotebookLM's "Studio > Note" sidebar using professional typography and Tailwind Typography (prose).
+A web extension to improve the readability of Google NotebookLM's "Studio > Note" sidebar using professional typography and Tailwind Typography (prose). Works on Chrome and Firefox.
 
 ## Features
 
@@ -32,3 +32,7 @@ Please ensure you add your own icon files to the `extension/icons/` directory:
 
 ## License
 MIT
+
+---
+
+Created by Nando Rossi * https://nan.do

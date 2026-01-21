@@ -101,15 +101,10 @@
   background: transparent;
   border-radius: 50%;
   cursor: pointer;
-  color: #000000;
-  transition: background-color 0.2s;
+  color: #5f6368;
   padding: 0;
   margin-right: 4px;
   position: relative;
-}
-
-.nb-focus-button:hover {
-  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .nb-focus-button .material-symbols-outlined {
@@ -177,17 +172,47 @@
   border-radius: 50%;
   cursor: pointer;
   color: #5f6368;
-  transition: background-color 0.2s;
   padding: 0;
-}
-
-.nb-focus-close:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  position: relative;
 }
 
 .nb-focus-close .material-symbols-outlined {
   font-size: 20px;
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+/* Material Design Button Hover Effect */
+.nb-focus-button:hover > .mat-mdc-button-persistent-ripple::before,
+.nb-focus-close:hover > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-icon-button-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity, 0.08)) !important;
+}
+
+.nb-focus-button .mat-mdc-button-persistent-ripple::before,
+.nb-focus-close .mat-mdc-button-persistent-ripple::before {
+  background-color: currentColor !important;
+}
+
+.mat-mdc-button-persistent-ripple,
+.mdc-icon-button__ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mat-mdc-button-persistent-ripple::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s linear;
 }
 
 /* Modal content area */

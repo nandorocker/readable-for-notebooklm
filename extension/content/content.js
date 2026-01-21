@@ -5,13 +5,13 @@
   let focusModal = null;
 
   // Initialize from storage
-  browser.storage.sync.get('readabilityEnabled').then(result => {
+  chrome.storage.sync.get('readabilityEnabled', (result) => {
     readabilityEnabled = result.readabilityEnabled || false;
     updateReadability();
   });
 
   // Listen for messages from popup
-  browser.runtime.onMessage.addListener((message) => {
+  chrome.runtime.onMessage.addListener((message) => {
     if (message.action === 'toggleReadability') {
       readabilityEnabled = message.enabled;
       updateReadability();
@@ -23,10 +23,8 @@
     if (readabilityEnabled) {
       root.classList.add('nb-readability-enabled');
       hideViewOnlyMessage();
-      console.log('[Readable for NotebookLM] Extension enabled');
     } else {
       root.classList.remove('nb-readability-enabled');
-      console.log('[Readable for NotebookLM] Extension disabled');
     }
     applyProseClasses();
   }
@@ -54,21 +52,17 @@
   function applyProseClasses() {
     // Only target doc viewers that are inside note-editor (not chat)
     const noteEditors = document.querySelectorAll('note-editor');
-    console.log('[Readable for NotebookLM] Found', noteEditors.length, 'note-editor elements');
     
     noteEditors.forEach(editor => {
       const docViewer = editor.querySelector('labs-tailwind-doc-viewer');
-      console.log('[Readable for NotebookLM] Found docViewer:', !!docViewer);
       if (!docViewer) return;
 
       if (readabilityEnabled) {
         docViewer.classList.add('nb-note-viewer');
-        console.log('[Readable for NotebookLM] Added nb-note-viewer class');
         injectTitleIntoContent(docViewer);
         injectFocusButton();
       } else {
         docViewer.classList.remove('nb-note-viewer');
-        console.log('[Readable for NotebookLM] Removed nb-note-viewer class');
         removeInjectedTitle(docViewer);
       }
     });
@@ -146,8 +140,11 @@
       <div class="nb-focus-modal-backdrop"></div>
       <div class="nb-focus-modal-panel">
         <div class="nb-focus-modal-header">
-          <button class="nb-focus-close" aria-label="Exit focused reading mode">
+          <button class="nb-focus-close mdc-icon-button mat-mdc-icon-button mat-mdc-button-base" aria-label="Exit focused reading mode">
+            <span class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"></span>
             <span class="material-symbols-outlined google-symbols">collapse_content</span>
+            <span class="mat-focus-indicator"></span>
+            <span class="mat-mdc-button-touch-target"></span>
           </button>
         </div>
         <div class="nb-focus-modal-content"></div>

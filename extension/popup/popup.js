@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Load current state
-  const result = await browser.storage.sync.get('readabilityEnabled');
+  const result = await chrome.storage.sync.get('readabilityEnabled');
   const isEnabled = result.readabilityEnabled || false;
   toggle.checked = isEnabled;
   updateVisuals(isEnabled);
@@ -20,15 +20,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   toggle.addEventListener('change', async () => {
     const enabled = toggle.checked;
     updateVisuals(enabled);
-    await browser.storage.sync.set({ readabilityEnabled: enabled });
+    await chrome.storage.sync.set({ readabilityEnabled: enabled });
 
     // Notify all NotebookLM tabs
-    const tabs = await browser.tabs.query({ url: "*://notebooklm.google.com/*" });
+    const tabs = await chrome.tabs.query({ url: "*://notebooklm.google.com/*" });
     for (const tab of tabs) {
-      browser.tabs.sendMessage(tab.id, { 
+      chrome.tabs.sendMessage(tab.id, { 
         action: 'toggleReadability', 
         enabled: enabled 
-      }).catch(err => console.log('Tab not ready:', err));
+      }).catch(() => {
+        // Tab not ready, ignore
+      });
     }
   });
 });
