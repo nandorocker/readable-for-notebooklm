@@ -24,7 +24,7 @@
     {
       "matches": ["https://notebooklm.google.com/*"],
       "js": ["content/content.js"],
-      "css": ["styles/tailwind.min.css", "styles/typography.min.css", "styles/readability.css"]
+      "css": ["styles/readability.css"]
     }
   ],
   "icons": {
