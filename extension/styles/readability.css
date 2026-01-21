@@ -1,0 +1,60 @@
+/* Scoped readability styles for NotebookLM */
+
+.nb-readability-enabled .labs-tailwind-doc-viewer {
+  padding: 2rem !important;
+  background-color: white !important;
+  color: #334155 !important; /* slate-700 */
+}
+
+/* Title Styling */
+.nb-readability-enabled .note-header__editable-title {
+  font-size: 1.875rem !important; /* 3xl substitute */
+  line-height: 2.25rem !important;
+  font-weight: 700 !important;
+  color: #0f172a !important; /* slate-900 */
+  margin-bottom: 2rem !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Section Header (Heading 3) */
+.nb-readability-enabled div.paragraph.heading3 {
+  font-size: 1.25rem !important; /* text-xl */
+  font-weight: 600 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 0.75rem !important;
+  color: #1e293b !important; /* slate-800 */
+}
+
+/* Body Text Paragraphs */
+.nb-readability-enabled div.paragraph.normal {
+  font-size: 1.125rem !important; /* 18px */
+  line-height: 1.75 !important;
+  margin-bottom: 1.25rem !important;
+  color: #334155 !important;
+}
+
+/* Citation markers - ensure they don't get lost */
+.nb-readability-enabled .citation-marker {
+  font-size: 0.75rem !important;
+  vertical-align: super !important;
+  margin-left: 2px !important;
+  opacity: 0.8;
+}
+
+/* Adjustments for Tailwind Typography interactions */
+.nb-readability-enabled .prose {
+  max-width: none !important;
+}
+
+/* Lists and bullets if they use standard tags, otherwise target the classes */
+.nb-readability-enabled .paragraph.normal ul, 
+.nb-readability-enabled .paragraph.normal ol {
+  margin-left: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.nb-readability-enabled .paragraph.normal li {
+  margin-bottom: 0.5rem !important;
+}

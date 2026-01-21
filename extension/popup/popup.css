@@ -1,0 +1,107 @@
+:root {
+  --md-sys-color-primary: #6750A4;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-surface: #FEF7FF;
+  --md-sys-color-on-surface: #1D1B20;
+  --md-sys-color-outline: #79747E;
+  --md-sys-color-surface-container: #F3EDF7;
+}
+
+body {
+  width: 300px;
+  margin: 0;
+  font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
+
+.container {
+  padding: 16px;
+}
+
+header h1 {
+  font-size: 1.25rem;
+  margin: 0 0 16px 0;
+  font-weight: 500;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--md-sys-color-surface-container);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.setting-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.setting-label .title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.setting-label .description {
+  font-size: 0.75rem;
+  color: var(--md-sys-color-outline);
+}
+
+/* Material Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 32px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--md-sys-color-outline);
+  transition: .4s;
+  border-radius: 32px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--md-sys-color-primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+footer {
+  margin-top: 16px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.7rem;
+  color: var(--md-sys-color-outline);
+}

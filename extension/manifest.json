@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "NotebookLM Readability Enhancer",
+  "version": "1.0",
+  "description": "Improves the readability of Google NotebookLM saved notes with professional typography.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://notebooklm.google.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://notebooklm.google.com/*"],
+      "js": ["content/content.js"],
+      "css": ["styles/tailwind.min.css", "styles/typography.min.css", "styles/readability.css"]
+    }
+  ],
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "notebooklm-readability@example.com"
+    }
+  }
+}
