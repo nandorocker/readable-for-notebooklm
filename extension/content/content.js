@@ -20,8 +20,10 @@
     if (readabilityEnabled) {
       root.classList.add('nb-readability-enabled');
       hideViewOnlyMessage();
+      console.log('[NotebookLM Readability] Extension enabled');
     } else {
       root.classList.remove('nb-readability-enabled');
+      console.log('[NotebookLM Readability] Extension disabled');
     }
     applyProseClasses();
   }
@@ -49,15 +51,20 @@
   function applyProseClasses() {
     // Only target doc viewers that are inside note-editor (not chat)
     const noteEditors = document.querySelectorAll('note-editor');
+    console.log('[NotebookLM Readability] Found', noteEditors.length, 'note-editor elements');
+    
     noteEditors.forEach(editor => {
-      const docViewer = editor.querySelector('.labs-tailwind-doc-viewer');
+      const docViewer = editor.querySelector('labs-tailwind-doc-viewer');
+      console.log('[NotebookLM Readability] Found docViewer:', !!docViewer);
       if (!docViewer) return;
 
       if (readabilityEnabled) {
         docViewer.classList.add('nb-note-viewer');
+        console.log('[NotebookLM Readability] Added nb-note-viewer class');
         injectTitleIntoContent(docViewer);
       } else {
         docViewer.classList.remove('nb-note-viewer');
+        console.log('[NotebookLM Readability] Removed nb-note-viewer class');
         removeInjectedTitle(docViewer);
       }
     });
