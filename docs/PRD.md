@@ -1,4 +1,4 @@
-# Product Requirements Document: NotebookLM Readability Extension
+# Product Requirements Document: Readable for NotebookLM
 
 ## 1. Overview
 

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "NotebookLM Readability Enhancer",
+  "name": "Readable for NotebookLM",
   "version": "1.0",
-  "description": "Improves the readability of Google NotebookLM saved notes with professional typography.",
+  "description": "Readable for NotebookLM improves the readability of Google NotebookLM saved notes with professional typography.",
   "permissions": [
     "storage"
   ],
@@ -34,7 +34,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "notebooklm-readability@example.com"
+      "id": "readable-notebooklm@example.com"
     }
   }
 }

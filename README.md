@@ -1,4 +1,4 @@
-# NotebookLM Readability Enhancer
+# Readable for NotebookLM
 
 A Firefox extension to improve the readability of Google NotebookLM's "Studio > Note" sidebar using professional typography and Tailwind Typography (prose).
 
