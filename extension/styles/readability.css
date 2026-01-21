@@ -1,18 +1,25 @@
 /* Scoped readability styles - ONLY targets content inside note-editor */
 
-/* Main container - only when inside note-editor */
+/* Remove default width/height limits on the editor container */
+.nb-readability-enabled note-editor {
+  max-inline-size: none !important;
+  max-block-size: none !important;
+  --nb-optimal-width: 42rem;
+}
+
+/* Main container - full width to keep scrollbar on right */
 .nb-readability-enabled note-editor .nb-note-viewer {
   display: block !important;
   padding: 3rem 2rem !important;
   background-color: #ffffff !important;
+  width: 100% !important;
 }
 
 /* Center all child elements with optimal reading width */
 .nb-readability-enabled note-editor .nb-note-viewer > * {
-  max-width: 65ch !important;
+  max-width: var(--nb-optimal-width) !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  display: block !important;
 }
 
 /* Injected Title */
