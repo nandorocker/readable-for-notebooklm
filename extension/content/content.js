@@ -84,8 +84,7 @@
         h1.textContent = titleValue;
         viewer.prepend(h1);
         
-        // Hide the original one to prevent duplication and clipping issues
-        originalTitle.classList.add('nb-hidden-title');
+        // Keep the original title visible and editable
       }
     }
   }
@@ -93,11 +92,6 @@
   function removeInjectedTitle(viewer) {
     const injected = viewer.querySelector('.nb-injected-title');
     if (injected) injected.remove();
-
-    const originalTitle = document.querySelector('.note-header__editable-title');
-    if (originalTitle) {
-      originalTitle.classList.remove('nb-hidden-title');
-    }
   }
 
   // Observe DOM changes to handle dynamic content loading in NotebookLM

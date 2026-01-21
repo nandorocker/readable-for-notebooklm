@@ -26,18 +26,9 @@
   border-bottom: 2px solid #e2e8f0 !important;
 }
 
-/* Hide original title */
-.nb-readability-enabled note-editor .note-header__editable-title.nb-hidden-title {
-  display: none !important;
-}
-
-/* Collapse title container */
-.nb-readability-enabled note-editor .note-title-container:has(.nb-hidden-title) {
-  height: 0 !important;
-  min-height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  overflow: hidden !important;
+/* Keep original title container visible but minimized */
+.nb-readability-enabled note-editor .note-title-container {
+  /* Original title stays visible and editable */
 }
 
 /* Hide view-only message */
