@@ -117,7 +117,7 @@
     button.setAttribute('mat-icon-button', '');
     button.innerHTML = `
       <span class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"></span>
-      <span class="material-symbols-outlined google-symbols">fullscreen</span>
+      <span class="material-symbols-outlined google-symbols">expand_content</span>
       <span class="mat-focus-indicator"></span>
       <span class="mat-mdc-button-touch-target"></span>
     `;
@@ -147,7 +147,7 @@
       <div class="nb-focus-modal-panel">
         <div class="nb-focus-modal-header">
           <button class="nb-focus-close" aria-label="Exit focused reading mode">
-            <span class="material-symbols-outlined google-symbols">close_fullscreen</span>
+            <span class="material-symbols-outlined google-symbols">collapse_content</span>
           </button>
         </div>
         <div class="nb-focus-modal-content"></div>
