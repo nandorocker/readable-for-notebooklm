@@ -1,5 +1,8 @@
 (function() {
   let readabilityEnabled = false;
+  let focusMode = false;
+  let originalParent = null;
+  let focusModal = null;
 
   // Initialize from storage
   browser.storage.sync.get('readabilityEnabled').then(result => {
@@ -62,6 +65,7 @@
         docViewer.classList.add('nb-note-viewer');
         console.log('[NotebookLM Readability] Added nb-note-viewer class');
         injectTitleIntoContent(docViewer);
+        injectFocusButton();
       } else {
         docViewer.classList.remove('nb-note-viewer');
         console.log('[NotebookLM Readability] Removed nb-note-viewer class');
@@ -93,6 +97,102 @@
     const injected = viewer.querySelector('.nb-injected-title');
     if (injected) injected.remove();
   }
+
+  function injectFocusButton() {
+    // Check if button already exists
+    if (document.querySelector('.nb-focus-button')) return;
+
+    // Find the note title container with the delete button
+    const titleContainer = document.querySelector('.note-title-container');
+    if (!titleContainer) return;
+
+    // Find the delete button
+    const deleteButton = titleContainer.querySelector('button[aria-label*="Delete"]');
+    if (!deleteButton) return;
+
+    // Create the fullscreen button matching NotebookLM's Material Design style
+    const button = document.createElement('button');
+    button.className = 'nb-focus-button mdc-icon-button mat-mdc-icon-button mat-mdc-button-base';
+    button.setAttribute('aria-label', 'Focused reading mode');
+    button.setAttribute('mat-icon-button', '');
+    button.innerHTML = `
+      <span class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"></span>
+      <span class="material-symbols-outlined google-symbols">fullscreen</span>
+      <span class="mat-focus-indicator"></span>
+      <span class="mat-mdc-button-touch-target"></span>
+    `;
+    
+    // Insert before the delete button
+    titleContainer.insertBefore(button, deleteButton);
+
+    // Add click handler
+    button.addEventListener('click', openFocusMode);
+  }
+
+  function openFocusMode() {
+    if (focusMode) return;
+
+    const noteEditor = document.querySelector('note-editor');
+    const docViewer = noteEditor?.querySelector('.nb-note-viewer');
+    if (!docViewer) return;
+
+    // Store original parent
+    originalParent = docViewer.parentElement;
+
+    // Create modal overlay
+    focusModal = document.createElement('div');
+    focusModal.className = 'nb-focus-modal';
+    focusModal.innerHTML = `
+      <div class="nb-focus-modal-backdrop"></div>
+      <div class="nb-focus-modal-panel">
+        <div class="nb-focus-modal-header">
+          <button class="nb-focus-close" aria-label="Exit focused reading mode">
+            <span class="material-symbols-outlined">close_fullscreen</span>
+          </button>
+        </div>
+        <div class="nb-focus-modal-content"></div>
+      </div>
+    `;
+
+    // Move the doc viewer into the modal
+    const contentContainer = focusModal.querySelector('.nb-focus-modal-content');
+    contentContainer.appendChild(docViewer);
+
+    // Add to DOM
+    document.body.appendChild(focusModal);
+
+    // Set up event listeners
+    const closeButton = focusModal.querySelector('.nb-focus-close');
+    const backdrop = focusModal.querySelector('.nb-focus-modal-backdrop');
+    
+    closeButton.addEventListener('click', closeFocusMode);
+    backdrop.addEventListener('click', closeFocusMode);
+
+    focusMode = true;
+  }
+
+  function closeFocusMode() {
+    if (!focusMode || !focusModal || !originalParent) return;
+
+    const docViewer = focusModal.querySelector('.nb-note-viewer');
+    if (docViewer && originalParent) {
+      // Move the doc viewer back to original location
+      originalParent.appendChild(docViewer);
+    }
+
+    // Remove modal from DOM
+    focusModal.remove();
+    focusModal = null;
+    originalParent = null;
+    focusMode = false;
+  }
+
+  // Handle ESC key to close focus mode
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && focusMode) {
+      closeFocusMode();
+    }
+  });
 
   // Observe DOM changes to handle dynamic content loading in NotebookLM
   const observer = new MutationObserver((mutations) => {
