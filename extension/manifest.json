@@ -2,14 +2,14 @@
   "manifest_version": 3,
   "name": "Readable for NotebookLM",
   "version": "1.0.0",
-  "description": "Readable for NotebookLM improves the readability of Google NotebookLM saved notes with professional typography.",
+  "description": "Readable for NotebookLM improves the readability of Google NotebookLM saved notes with better typography and enhanced focus mode.",
   "author": "Nando Rossi",
   "homepage_url": "https://nan.do",
   "permissions": [
     "storage"
   ],
   "host_permissions": [
-    "https://notebooklm.google.com/*"
+    "https://notebooklm.google.com/notebook/*"
   ],
   "action": {
     "default_popup": "popup/popup.html",
@@ -24,7 +24,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://notebooklm.google.com/*"],
+      "matches": ["https://notebooklm.google.com/notebook/*"],
       "js": ["content/content.js"],
       "css": ["styles/readability.css"]
     }
@@ -36,7 +36,10 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "readable-notebooklm@example.com"
+      "id": "readable-notebooklm@nan.do",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   }
 }
