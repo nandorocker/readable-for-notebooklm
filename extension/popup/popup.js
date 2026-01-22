@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await chrome.storage.sync.set({ readabilityEnabled: enabled });
 
     // Notify all NotebookLM tabs
-    const tabs = await chrome.tabs.query({ url: "*://notebooklm.google.com/*" });
+    const tabs = await chrome.tabs.query({ url: "*://notebooklm.google.com/notebook/*" });
     for (const tab of tabs) {
       chrome.tabs.sendMessage(tab.id, { 
         action: 'toggleReadability', 

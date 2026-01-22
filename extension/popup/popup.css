@@ -105,11 +105,13 @@ input:checked + .slider:before {
 }
 
 footer {
-  margin-top: 16px;
+  margin-top: 24px;
   text-align: center;
+  font-size: 0.65rem;
+  color: var(--md-sys-color-outline);
 }
 
-footer p {
-  font-size: 0.7rem;
-  color: var(--md-sys-color-outline);
+footer a {
+  color: inherit;
+  text-decoration: underline;
 }
