@@ -59,16 +59,9 @@ extension/
 └── icons/              # Extension icons (48x48, 96x96, 128x128)
 ```
 
-## Note on Icons
-
-If you're building from source, add your own icon files to the `extension/icons/` directory:
-- `icon-48.png` / `icon-off-48.png`
-- `icon-96.png` / `icon-off-96.png`
-- `icon-128.png` / `icon-off-128.png`
-
 ## Credits
 
-Built with assistance from Claude (Anthropic), GitHub Copilot, and Gemini. AI helping AI out.
+Built with assistance from Claude, GitHub Copilot, and Gemini. AI helping AI out.
 
 ## License
 
