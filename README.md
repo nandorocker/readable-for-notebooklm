@@ -4,16 +4,15 @@ A browser extension that makes reading Google NotebookLM's "Studio > Note" sideb
 
 ## Why This Exists
 
-I use NotebookLM constantly—it's genuinely my favorite way to learn about anything. But reading the notes has always been painful. The typography is cramped, the spacing is off, and there are zero settings to fix it. After waiting for Google to improve this and realizing they're taking their time, I thought: why not fix it myself?
-
-So here we are. This is my first browser extension, born out of mild frustration and a genuine love for the product.
+NotebookLM is my favorite way to learn, but I never understood why the "saved notes" pane is so crappy. I constantly find myself copying and pasting notes into a Google Doc, which is annoying. Since Google doesn't seem to care, I just went ahead and fixed it myself.
 
 ## Features
 
-- **Toggle Mode**: Enable or disable readability mode via the extension popup
-- **Professional Typography**: Applies Tailwind CSS Typography (`prose`) for proper line height, font sizing, and spacing
-- **Persistent State**: Your preference is saved and applied automatically across sessions
+- **Easy Toggle**: Enable or disable with one simple toggle
+- **Improved Typography**: Applies Tailwind CSS Typography (`prose`) for proper line height, font sizing, and spacing
+- **Focus Mode**: Open the note "fullscreen" for an even better reading experience
 - **Native Experience**: Preserves citation markers and all native NotebookLM functionality
+- **Persistent State**: Your preference is saved and applied automatically across sessions
 
 ## Installation
 
@@ -63,9 +62,9 @@ extension/
 ## Note on Icons
 
 If you're building from source, add your own icon files to the `extension/icons/` directory:
-- `icon-48.png`
-- `icon-96.png`
-- `icon-128.png`
+- `icon-48.png` / `icon-off-48.png`
+- `icon-96.png` / `icon-off-96.png`
+- `icon-128.png` / `icon-off-128.png`
 
 ## Credits
 
@@ -77,4 +76,4 @@ MIT
 
 ---
 
-Created by Nando Rossi • [nan.do](https://nan.do)
+Created by Nando Rossi • [nan.do](https://nan.do) • If you use this extension a lot, consider [buying me a coffee](https://buymeacoffee.com/nandorossi).

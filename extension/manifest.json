@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Readable for NotebookLM",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Readable for NotebookLM improves the readability of Google NotebookLM saved notes with better typography and enhanced focus mode.",
   "author": "Nando Rossi",
   "homepage_url": "https://nan.do",

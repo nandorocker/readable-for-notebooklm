@@ -38,3 +38,4 @@ logs/
 
 # Misc
 .web-ext-config.js
+.amo-upload-uuid
