@@ -18,10 +18,12 @@ chrome.storage.onChanged.addListener((changes) => {
 
 function updateIcon(enabled) {
   const path = enabled ? {
+    "32": "icons/icon-32.png",
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png",
     "128": "icons/icon-128.png"
   } : {
+    "32": "icons/icon-off-32.png",
     "48": "icons/icon-off-48.png",
     "96": "icons/icon-off-96.png",
     "128": "icons/icon-off-128.png"
